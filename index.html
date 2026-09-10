@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f1e8">
+  <meta name="description" content="A personal homepage. Explore a small corner of the web through a terminal.">
+  <title>Personal Terminal</title>
+  <link rel="preload" href="./assets/fonts/VT323-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./css/main.css">
+  <script type="module" src="./js/terminal.js"></script>
+</head>
+<body>
+  <main class="desktop">
+    <section class="terminal" aria-label="Personal homepage terminal">
+      <header class="titlebar">
+        <div class="window-controls" aria-hidden="true"><span class="close">×</span><span>−</span><span>□</span></div>
+        <span id="window-title">guest@homepage: ~</span><span class="terminal-label">Terminal</span>
+      </header>
+      <div class="terminal-body" id="terminal-body" tabindex="0" aria-label="Terminal output and input">
+        <pre class="welcome" id="welcome">Connecting to homepage...</pre>
+        <div id="output" role="log" aria-live="polite" aria-relevant="additions" aria-label="Command output"></div>
+        <form id="command-form" autocomplete="off"><label for="command" id="prompt"></label><input id="command" name="command" aria-label="Terminal command" autocomplete="off" autocapitalize="off" spellcheck="false" disabled></form>
+      </div>
+      <div class="sr-only" role="status"><span id="session-status">loading</span><span id="location">~</span></div>
+    </section>
+  </main>
+  <noscript>This homepage needs JavaScript to run its simulated terminal. Personal content is available in <a href="./data/site-data.json">site-data.json</a>.</noscript>
+</body>
+</html>

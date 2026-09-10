@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'VT323';
+  src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --paper: #f3f1e8;
+  --desktop: #e4e2d9;
+  --ink: #35372f;
+  --muted: #64655a;
+  --accent: #7b4938;
+  --path: #5b536d;
+  --line: #b5b5a6;
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--desktop); }
+button, input, textarea, pre, code, h2, label, legend { font: inherit; }
+button { cursor: pointer; color: inherit; }
+a { color: var(--accent); text-underline-offset: 3px; }
+::selection { color: var(--paper); background: #606456; }
+button:focus-visible, a:focus-visible, input:focus-visible,
+textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+button, input, textarea { -webkit-tap-highlight-color: transparent; }
+
+/* A nearly maximized terminal: no surrounding navigation or landing-page chrome. */
+.desktop { width: 100%; height: 100svh; height: 100dvh; padding: 16px; }
+.terminal {
+  height: 100%; display: flex; flex-direction: column;
+  background: var(--paper); border: 1px solid #8d8f80; border-radius: 2px;
+  box-shadow: 3px 3px 0 #373b2c16;
+  overflow: hidden; animation: arrive .18s ease-out;
+}
+.titlebar {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  position: relative; min-height: 38px; padding: 5px 108px;
+  background: #e4e4da; border-bottom: 1px solid var(--line);
+}
+#window-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.window-controls { position: absolute; left: 10px; display: flex; gap: 7px; }
+.window-controls span {
+  width: 21px; height: 21px; display: grid; place-items: center;
+  border: 1px solid #999c8c; line-height: 1; background: #efeee5;
+}
+.window-controls .close { color: var(--accent); }
+.terminal-label { position: absolute; right: 13px; color: var(--muted); }
+.terminal-body {
+  flex: 1; min-height: 0; overflow: auto;
+  scrollbar-color: #a3a796 var(--paper);
+  padding: 24px 28px; overflow-wrap: anywhere;
+  /* Sparse, static paper grain, kept below text contrast. */
+  background-image: radial-gradient(#55563809 .55px, transparent .8px),
+    radial-gradient(#55563806 .55px, transparent .8px);
+  background-size: 5px 7px, 11px 13px;
+  background-position: 0 0, 3px 4px;
+}
+.welcome { white-space: pre-wrap; margin: 0 0 1.25em; }
+.command-entry { margin: 0 0 1.25em; }
+.echo, .result { white-space: pre-wrap; }
+.result { margin: 0; color: var(--ink); }
+.prompt-user { color: #4d603d; }
+.prompt-path, .directory { color: var(--path); }
+.error { color: #8b3c2e; }
+.output-link { display: block; width: fit-content; }
+#command-form { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 .5ch; }
+#prompt { flex-shrink: 0; max-width: 100%; overflow-wrap: anywhere; }
+#command {
+  flex: 1 1 120px; width: 0; min-width: 0;
+  border: 0; outline: none; border-radius: 0; padding: 0;
+  font: inherit; color: var(--ink); background: transparent; caret-color: var(--ink);
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+noscript { display: block; padding: 24px; }
+@keyframes arrive { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+@media (max-width: 650px) {
+  .desktop { padding: 6px; }
+  .terminal-body { padding: 16px 12px; }
+  .terminal-label { display: none; }
+  .titlebar { justify-content: flex-end; padding: 5px 10px 5px 100px; }
+}
+
+/* Preserve the hidden GPU table columns on narrow screens. */
+.result-table {
+  line-height: 1;
+  overflow-x: auto;
+  white-space: pre;
+  overflow-wrap: normal;
+  /* ASCII columns need one advance per character, including fi/fl pairs. */
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
+  font-kerning: none;
+  letter-spacing: 0;
+}

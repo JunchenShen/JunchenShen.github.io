@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "Junchen Shen",
+    "username": "sjc",
+    "about": "Hello, I'm Junchen Shen.\n\nI am currently a university student majoring in Computer Science and Technology at the University of Electronic Science and Technology of China, and I am relatively interested in computer architecture and AI infra.",
+    "email": "2024030701006@std.uestc.edu.cn",
+    "github": "https://github.com/JunchenShen"
+  },
+  "education": [
+    { "school": "UESTC", "degree": "Undergraduate", "period": "2024 — 2028", "description": "Computer Science and Technology" }
+  ],
+  "projects": [
+    { "slug": "this-is-a-test", "name": "test", "description": "test", "github": "", "demo": "", "tags": ["Tag one", "Tag two"] },
+    { "slug": "this-also-is-a-test", "name": "test", "description": "test", "github": "", "demo": "", "tags": ["In progress"] }
+  ],
+  "research": { "interests": "Computer systems   Computer architecture   Speculative decoding   ai-infra" },
+  "links": [ { "name": "github", "url": "https://github.com/JunchenShen" } ]
+}
